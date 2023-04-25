@@ -14,8 +14,6 @@ use Inertia\Inertia;
 class TeacherController extends Controller
 {
     public function index(Request $request){
-        Gate::authorize('tasks_applications');
-
         $tasks = [];
 
         // Get current teacher's made tasks
@@ -52,7 +50,6 @@ class TeacherController extends Controller
     }
 
     public function create(Request $request, $locale){
-        Gate::authorize('tasks_create');
         if (! in_array($locale, ['en', 'hr'])) {
             abort(400);
         }
@@ -66,8 +63,6 @@ class TeacherController extends Controller
     }
 
     public function store(Request $request){
-        Gate::authorize('tasks_create');
-
         if($request->has(['name','name_eng','description','studies'])){
             $request->validate([
                 'name' => ['required', 'max:100'],
@@ -95,8 +90,6 @@ class TeacherController extends Controller
     }
 
     public function studentStore(Request $request, $task_id){
-        Gate::authorize('tasks_create');
-
         if($request->has('user_id')){
             $user_id = $request->get('user_id');
 
@@ -116,8 +109,6 @@ class TeacherController extends Controller
     }
 
     public function studentDestroy(Request $request, $task_id){
-        Gate::authorize('tasks_create');
-
         if($request->has('user_id')){
             $user_id = $request->get('user_id');
 

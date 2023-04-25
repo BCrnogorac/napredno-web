@@ -1,7 +1,7 @@
 <script setup>
-import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue';
-import BreezeButton from '@/Components/Button.vue';
-import { Head } from '@inertiajs/inertia-vue3';
+import BreezeAuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import BreezeButton from '@/Components/PrimaryButton.vue';
+import { Head } from '@inertiajs/vue3';
 defineProps({
     role: Number,
     users: Array,
@@ -34,6 +34,7 @@ defineProps({
 </template>
 
 <script>
+import axios from 'axios'
 export default{
     methods:{
         roleLabel(role_id){
@@ -49,7 +50,6 @@ export default{
             }
         },
         changeRole(user){
-            const axios = require('axios').default;
             axios.post(`./roles/${user.id}`)
             .then(function(response){
                 user.role_id = response.data.role_id;

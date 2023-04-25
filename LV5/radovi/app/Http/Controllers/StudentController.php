@@ -13,9 +13,6 @@ use Inertia\Inertia;
 class StudentController extends Controller
 {
     public function index(Request $request){
-        Gate::authorize('tasks_apply');
-
-        // Get available tasks
         $tasks = [];
         foreach(Task::all() as $task){
             $studies = [];
@@ -34,7 +31,6 @@ class StudentController extends Controller
 
             array_push($tasks, $data);
         }
-        // Get tasks current student applied for
         $applied_tasks = [];
         foreach(Auth()->user()->applications as $application){
             array_push($applied_tasks, $application->id);

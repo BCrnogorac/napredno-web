@@ -1,7 +1,7 @@
 <script setup>
-import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue';
-import BreezeButton from '@/Components/Button.vue';
-import { Head } from '@inertiajs/inertia-vue3';
+import BreezeAuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import BreezeButton from '@/Components/PrimaryButton.vue';
+import { Head } from '@inertiajs/vue3';
 defineProps({
     role: Number,
     tasks: Array,
@@ -50,11 +50,12 @@ defineProps({
     </BreezeAuthenticatedLayout>
 </template>
 <script>
+import axios from 'axios'
 export default {
+   
     name: "Tasks",
     methods:{
         apply(task_id){
-            const axios = require('axios').default;
             if(!this.applied_tasks.includes(task_id)){
                 axios.post(`./store/${task_id}`);
                 this.applied_tasks.push(task_id);

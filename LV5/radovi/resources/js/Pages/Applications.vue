@@ -1,7 +1,7 @@
 <script setup>
-import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue';
-import BreezeButton from '@/Components/Button.vue';
-import { Head } from '@inertiajs/inertia-vue3';
+import BreezeAuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import BreezeButton from '@/Components/PrimaryButton.vue';
+import { Head } from '@inertiajs/vue3';
 
 defineProps({
     role: Number,
@@ -43,18 +43,17 @@ defineProps({
 
 <script>
 import { Inertia } from '@inertiajs/inertia'
+import axios from 'axios'
 export default {
     name: "Applications",
     methods:{
         assignStudent(task_id, student_id){
-            const axios = require('axios').default;
             axios.post(route('teacher.tasks.student.store', task_id),{
                 user_id: student_id
             });
             Inertia.reload({ only: ['tasks'] })
         },
         removeStudent(task_id, student_id){
-            const axios = require('axios').default;
             axios.post(route('teacher.tasks.student.destroy', task_id),{
                 user_id: student_id
             });

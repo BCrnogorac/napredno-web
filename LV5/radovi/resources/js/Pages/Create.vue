@@ -1,10 +1,10 @@
 <script setup>
-import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue';
-import BreezeButton from '@/Components/Button.vue';
+import BreezeAuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import BreezeButton from '@/Components/PrimaryButton.vue';
 import BreezeCheckbox from '@/Components/Checkbox.vue';
-import BreezeInput from '@/Components/Input.vue';
-import BreezeLabel from '@/Components/Label.vue';
-import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
+import BreezeInput from '@/Components/TextInput.vue';
+import BreezeLabel from '@/Components/InputLabel.vue';
+import { Head, Link, useForm } from '@inertiajs/vue3';
 
 defineProps({
     role: Number,

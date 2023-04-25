@@ -11,8 +11,6 @@ use Inertia\Inertia;
 class AdminController extends Controller
 {
     public function roles(Request $request){
-        Gate::authorize('user_update_role');
-
         return Inertia::render('Roles',[
             'role' => Auth()->user()->role_id,
             'users' => User::all(),
