@@ -31,9 +31,8 @@
 
   --color-heading: var(--vt-c-text-dark-1);
   --color-text: var(--vt-c-text-dark-2);
-
-  --section-gap: 160px;
 }
+
 
 *,
 *::before,
